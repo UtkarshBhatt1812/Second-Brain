@@ -2,7 +2,7 @@ import type { Context } from "hono";
 import {
   successResponse,
   errorResponse,
-} from "../../../../utlis/response";
+} from "../../utlis/response";
 import {
   serviceCreateContent,
   serviceGetMyContent,

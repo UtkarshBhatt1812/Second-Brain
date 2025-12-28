@@ -1,6 +1,6 @@
 import type { Context } from "hono" 
 import { serviceDetails, serviceLogin, serviceRegister } from "./auth.service";
-import { errorResponse, successResponse } from "../../../../utlis/response";
+import { errorResponse, successResponse } from "../../utlis/response";
 import { setCookie , deleteCookie } from "hono/cookie";
 import { contentModel } from "../../collections/content/content.scehma";
  

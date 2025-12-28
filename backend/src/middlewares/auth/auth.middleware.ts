@@ -2,7 +2,7 @@ import type { Context, Next } from "hono";
 import { getCookie } from "hono/cookie";
 import { verify } from "hono/jwt";
 import { env } from "../../config/env";
-import { errorResponse } from "../../../../utlis/response";
+import { errorResponse } from "../../utlis/response";
 
 export const authMiddleware = async (c: Context, next: Next) => {
   try {
