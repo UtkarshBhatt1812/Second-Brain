@@ -1,6 +1,6 @@
 import app from "./app";
-import {env} from "./config/env";
-import { connectDB } from './config/db';
+import {env} from "../backend/src/config/env";
+import { connectDB } from '../backend/src/config/db';
 
 await connectDB();
 
