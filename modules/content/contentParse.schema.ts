@@ -1,9 +1,11 @@
 
 import z from "zod";
-import type { Content } from "../../collections/content/content.scehma";
 
-export const validateContent =(content : Content)=>{
-    const verifiedContent = z.object({
-        
-    })
-}
+
+export const validateContent =z.object({
+  title: z.string().min(3),
+  body: z.string().min(10),
+  tags: z.array(z.string()).optional(),
+});
+
+export type CreateContentInput = z.infer<typeof validateContent>;

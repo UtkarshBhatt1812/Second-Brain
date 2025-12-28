@@ -42,7 +42,7 @@ export const handleLogin=async (c: Context)=>{
     }
 }
 export const getMyDetails = async (c : Context)=>{
-    const user = c.get('user')
+    const user = c.get('token')
     const userDetails = await serviceDetails(user);
 
     return c.json(successResponse('FetchSuccesfully',userDetails),201)

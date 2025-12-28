@@ -1,4 +1,4 @@
-import { model, Schema ,Types ,type InferSchemaType} from "mongoose";
+import mongoose, { model, Schema ,Types ,type InferSchemaType} from "mongoose";
 import { boolean, maxLength, trim } from "zod";
 
 const ContentType =[ "note",
@@ -7,6 +7,7 @@ const ContentType =[ "note",
   "task","video"]
 const contentSchema = new Schema(
     {
+        
         title :{
             type : String,
             required : true,
@@ -20,13 +21,13 @@ const contentSchema = new Schema(
         ,
         type : {
             type : String,
-            required : true ,
             enum : ContentType,
-            index : true
+            index : true,
+            default : 'note'
         }
         ,
         isPublic :{
-            type : String,
+            type : boolean,
             default : false
         }
         ,owner : {

@@ -6,7 +6,7 @@ type Response = {
 }
 
 
-export function successResponse(message : string ,data ?:Object ) : Response{
+export function successResponse(message : string ,data ?:any ) : Response{
     return {
         success : true,
         message : message,
