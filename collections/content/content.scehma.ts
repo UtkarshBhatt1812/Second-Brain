@@ -1,7 +1,7 @@
-import { model, Schema ,Types} from "mongoose";
+import { model, Schema ,Types ,type InferSchemaType} from "mongoose";
 import { boolean, maxLength, trim } from "zod";
 
-export const ContentType =[ "note",
+const ContentType =[ "note",
   "idea",
   "link",
   "task","video"]
@@ -40,4 +40,5 @@ const contentSchema = new Schema(
         }
     }
 )
+export  type Content = InferSchemaType<typeof contentSchema>
 export const contentModel = model('content',contentSchema)
