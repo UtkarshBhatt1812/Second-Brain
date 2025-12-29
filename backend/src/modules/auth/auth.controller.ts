@@ -3,7 +3,7 @@ import { serviceDetails, serviceLogin, serviceRegister } from "./auth.service";
 import { errorResponse, successResponse } from "../../utlis/response";
 import { setCookie , deleteCookie } from "hono/cookie";
 import { contentModel } from "../../collections/content/content.scehma";
- 
+
  export const handleRegister =async (c : Context)=>{
    try {
     const body = await c.req.json();
@@ -39,6 +39,19 @@ export const handleLogin=async (c: Context)=>{
     } catch (error) {
         return c.json(errorResponse("Login Failed : "+error),401)
     }
+}
+export const handleLogout = (c: Context) => {
+  deleteCookie(c, 'token', {
+    httpOnly: true,
+    secure: false,      // false in local dev if no HTTPS
+    sameSite: 'Strict',
+    path: '/',
+  })
+  c.set('user',null)
+  return c.json({
+    success: true,
+    message: 'Logged out successfully',
+  })
 }
 export const getMyDetails = async (c : Context)=>{
     const user = c.get('user')

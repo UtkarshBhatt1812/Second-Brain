@@ -9,9 +9,9 @@ export  type ContentUser = {
 }
   export const serviceCreateContent =async (body : JSON ,user : ContentUser)=>{
     const data = validateContent.parse(body)
+
     const content = await contentModel.create({
-      title : data.title,
-      body : data.body,
+      ...data,
       owner : user.id,
     });
     return content
@@ -42,6 +42,7 @@ export  type ContentUser = {
   id: string,
   user: ContentUser
 ) => {
+
   const deleted = await contentModel.findOneAndDelete({
     _id: id,
     owner: user.id,

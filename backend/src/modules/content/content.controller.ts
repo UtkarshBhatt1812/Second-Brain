@@ -14,7 +14,7 @@ import {
 export const handleCreateContent = async (c: Context) => {
   try {
     const body = await c.req.json();
-    const user = c.get("token"); 
+    const user = c.get("user"); 
 
     const content = await serviceCreateContent(body, user);
 
@@ -33,7 +33,7 @@ export const handleCreateContent = async (c: Context) => {
 
 export const handleGetMyContent = async (c: Context) => {
   try {
-    const user = c.get("token");
+    const user = c.get("user");
 
     const content = await serviceGetMyContent(user);
 
@@ -52,9 +52,9 @@ export const handleGetMyContent = async (c: Context) => {
 
 export const handleUpdateContent = async (c: Context) => {
   try {
-    const id = c.req.param("id");
+    const id = c.req.param("contentId");
     const body = await c.req.json();
-    const user = c.get("token");
+    const user = c.get("user");
 
     const updated = await serviceUpdateContent(id, body, user);
 
@@ -73,8 +73,8 @@ export const handleUpdateContent = async (c: Context) => {
 
 export const handleDeleteContent = async (c: Context) => {
   try {
-    const id = c.req.param("id");
-    const user = c.get("token");
+    const id = await c.req.param("contentId");
+    const user = c.get("user");
 
     await serviceDeleteContent(id, user);
 
