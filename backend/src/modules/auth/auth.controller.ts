@@ -20,7 +20,6 @@ import { contentModel } from "../../collections/content/content.scehma";
      )
    }
 
-
 }
 
 export const handleLogin=async (c: Context)=>{
@@ -42,8 +41,8 @@ export const handleLogin=async (c: Context)=>{
     }
 }
 export const getMyDetails = async (c : Context)=>{
-    const user = c.get('token')
+    const user = c.get('user')
     const userDetails = await serviceDetails(user);
-
-    return c.json(successResponse('FetchSuccesfully',userDetails),201)
+    console.log(userDetails)
+    return c.json(successResponse('Fetch Succesfully',userDetails),201)
 }

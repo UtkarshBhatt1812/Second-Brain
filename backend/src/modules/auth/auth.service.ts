@@ -55,6 +55,6 @@ export const serviceDetails=async (user : {
     id : Types.ObjectId,
     email : string
 })=>{
-    const userDetails = await UserModel.find({owner : user.id})
+    const userDetails = await UserModel.find({_id : user.id})
     return userDetails
 }

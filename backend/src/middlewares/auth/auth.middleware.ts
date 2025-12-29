@@ -6,31 +6,18 @@ import { errorResponse } from "../../utlis/response";
 
 export const authMiddleware = async (c: Context, next: Next) => {
   try {
-    
-    const token = getCookie(c, "access_token");
+    const token = getCookie(c, "token");
 
     if (!token) {
-      return c.json(
-        errorResponse("Unauthorized: Token missing"),
-        401
-      );
+      return c.json(errorResponse("Unauthorized"), 401);
     }
 
-    
     const payload = await verify(token, env.JWT_SECRET);
 
-    
-    c.set("user", {
-      id: payload.id,
-      email: payload.email,
-    });
+    c.set("user", payload); // store full payload
 
-    
     await next();
-  } catch (error) {
-    return c.json(
-      errorResponse("Unauthorized: Invalid or expired token"),
-      401
-    );
+  } catch {
+    return c.json(errorResponse("Invalid or expired token"), 401);
   }
 };

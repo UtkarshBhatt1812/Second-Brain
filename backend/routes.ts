@@ -1,6 +1,6 @@
 import { Hono } from "hono";
 import contentRoute from "../backend/src/modules/content/content.route";
-import authRoutes from "../backend/src/modules/content/content.route";
+import authRoutes from "../backend/src/modules/auth/auth.routes";
 
 
 const routes  = new Hono()

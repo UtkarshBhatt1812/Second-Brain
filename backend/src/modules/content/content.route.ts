@@ -10,7 +10,7 @@ import {
 const contentRoute = new Hono();
 
 
-contentRoute.use("*", authMiddleware);
+contentRoute.use("/*", authMiddleware);
 
 
 contentRoute.post("/", handleCreateContent);
